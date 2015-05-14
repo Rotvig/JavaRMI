@@ -1,24 +1,11 @@
-
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.rmi.registry.*; 
-@SuppressWarnings("serial")
-public class RmiServer
-    extends UnicastRemoteObject 
-    implements RmiServerIntf {
-    public static final String MESSAGE = "Hello World";
- 
-    public RmiServer() throws RemoteException {
-        super(0);    // required to avoid the 'rmic' step, see below
-    }
- 
-    public String getMessage() {
-        return MESSAGE;
-    }
- 
+import java.rmi.registry.LocateRegistry;
+
+
+public class EnviromentMain {
     public static void main(String args[]) throws Exception {
-        System.out.println("RMI server started");
+        System.out.println("EnviromentStatus RMI server started");
  
         try { //special exception handler for registry creation
             LocateRegistry.createRegistry(1099); 
@@ -33,7 +20,7 @@ public class RmiServer
         RmiServer obj = new RmiServer();
  
         // Bind this object instance to the name "RmiServer"
-        Naming.rebind("//localhost/RmiServer", obj);
+        Naming.rebind("//localhost/EnviromentStatus", obj);
         System.out.println("PeerServer bound in registry");
     }
 }
