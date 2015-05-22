@@ -6,6 +6,8 @@ import models.Enviroment;
 import models.WindTurbine;
  
 public interface RmiServerIntf extends Remote {
-    public WindTurbine getWindTurbineStatus() throws RemoteException;
+    public WindTurbine getWindTurbineStatus(Enviroment environment) throws RemoteException;
     public Enviroment getEnviromentStatus() throws RemoteException;
+    public void NewWindTurbineData(Enviroment environment) throws RemoteException;
+    public void NewEnviromentData() throws RemoteException;
 }
